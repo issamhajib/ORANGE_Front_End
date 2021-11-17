@@ -1,0 +1,145 @@
+<div class="header pb-5 pt-1 pt-lg-8 d-flex align-items-center" >
+    <!-- Mask -->
+    <span class="mask bg-gradient-danger opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row justify-content-md-center">
+      <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Declarer un nouveau incident</h3>
+              </div>
+              <div class="col-4 text-right">
+                <a href="#!" class="btn btn-sm btn-primary">xxx</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form>
+              <h6 class="heading-small text-orange mb-4">Information sur l'incidents</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Libelle :</label>
+                      <div class="form-group">
+                      
+                        <select class="form-control" id="exampleFormControlSelect1" (change)="onChange($event.target.value)">
+                          <option value="Alerte IT">Alerte IT</option>
+
+<option value="Alt Mineur">Alt Mineur</option>
+
+<option value="Alt Majeur">Alt Majeur</option>
+
+<option value="Alt Critiq">Alt Critiq</option>
+
+<option value="Notif IT">Notif IT</option>
+
+<option value="Inc Major">Inc Major</option>
+
+<option value="Inc Cri L1">Inc Cri L1</option>
+
+<option value="Inc Cri L2">Inc Cri L2</option>
+
+<option value=">Etat Net">Etat Net</option>
+
+<option value="Suivi Inc">Suivi Inc</option>
+
+<option value="Notif ZTE">Notif ZTE</option>
+
+<option value="Info">Info</option>
+
+<option value="Conf Call">Conf Call</option>
+
+<option value="Orange_evt">Orange_evt</option>
+
+<option value="Lien Rabat">Lien Rabat</option>
+
+<option value="Alt Min IT">Alt Min IT</option>
+
+<option value="Alt Maj IT">Alt Maj IT</option>
+
+<option value="Alt Cri IT">Alt Cri IT</option>
+
+<option value="TDLTE">TDLTE</option>
+
+<option value="WAS Event">WAS Event</option>
+
+<option value="CHAN_Event">CHAN_Event</option>
+
+<option value="Risque Inc">Risque Inc</option>
+
+<option value="Alt MinB2B">Alt MinB2B</option>
+
+<option value="Alt MajB2B">Alt MajB2B</option>
+
+<option value="Sofrecom">Sofrecom</option>
+
+
+                          
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-group-text">Details</label>
+                      <textarea rows="4"  [(ngModel)]="incident.details" [ngModelOptions]="{standalone: true}" class="form-control form-control-alternative" placeholder="Details"></textarea>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+              <hr class="my-4" />
+              <h6 class="heading-small text-orange mb-4">Equipe Intervenants</h6>
+              <div class="pl-lg-4 ">
+                <div class="form-group">
+                  <label>Equipes :</label>
+                  
+                  <div   *ngFor="let equipe of allequipes ; let i = index;"  >
+                    <input type="checkbox" name="{{equipe.id}}" value="Female" (change)="onCheckboxChange($event , equipe , i)"  >{{equipe.nomEquipe}}
+                   
+                  
+                   
+                  </div>
+                </div>
+                <div class="table-responsive" *ngIf="show">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let equipe of equipesselected ; let ii = index;">
+                        <td>
+                          {{equipe.id}}
+                        </td>
+                        <td>
+                          {{equipe.nomEquipe}}
+                        </td>
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn btn-warning my-4" (click)="postIncident()">Declarer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    

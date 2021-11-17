@@ -1,0 +1,335 @@
+<div class="header bg-gradient-warning pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row">
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Total des Equipes</h5>
+                    <span class="h2 font-weight-bold mb-0">4<!--  {{infos.nbrTotalEquipe}}--></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Total des Equipes sans Membres</h5>
+                    <span class="h2 font-weight-bold mb-0">5<!--{{infos.nbrTotalEquipeVide}}}--></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i class="fas fa-chart-bar"></i>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Total des Membres</h5>
+                    <span class="h2 font-weight-bold mb-0"><!--{{infos.nbrTotalMember}}}--></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="fas fa-user"></i>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Total des Membres sans equipe</h5>
+                    <span class="h2 font-weight-bold mb-0"><!--{{infos.nbrTotalMemberSansEquipe}}}--></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="fas fa-chart-pie"></i>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+          
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header align-baseline border-4 bg-dark">
+          <i class="fas fa-users-cog d-inline text-orange"></i>  <h3 class="mb-0 d-inline text-white"> Gestion des Equipes</h3>
+          </div>
+          <div class="py-md-2 px-md-5">
+           
+          
+          <div class="input-group border ">
+            <div class="input-group-prepend ">
+            <span class="input-group-text text-orange border-warning">Entrer le nom de l'équipe :</span>
+          </div>
+            <input type="text" class="form-control text-orange border-warning"  [(ngModel)]="addequipe.nomEquipe" [ngModelOptions]="{standalone: true}">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-outline-warning my-0" (click)="addEquip()"  >Ajouter</button>
+            </div>
+          </div>
+        </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light ">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nom</th>
+                  
+                  <th scope="col">Membres</th>
+                  <th scope="col">Actions</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let equipe of form ; let i = index;" >
+                  <th scope="row">
+                    <div class="media align-items-center">
+                   <!--  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                      </a>--> 
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{equipe.id}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    {{equipe.nomEquipe}}
+                  </td>
+                  
+                  <td >
+                    <div class="avatar-group">
+                   <a  class="avatar avatar-sm bg-warning" [routerLink]="['/profileMember', member.id]" data-toggle="tooltip" data-original-title="Ryan Tompson" *ngFor="let member of equipe.members  ; let i = index;" >
+                        <a ></a><i   class="rounded-circle" >  {{member.prenom[0]}}{{member.nom[0]}}</i>
+                      </a>
+                        
+                    </div>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-outline-warning my-0" (click)="equipeModification(i,equipe.id,modification) ; ;"  >Modifier l'équipe</button>
+                    <button type="button" class="btn btn-sm btn-outline-warning my-0" (click)="equipeAjouter(i,members)" >Ajouter des membres</button>
+                    <button type="button" class="btn btn-sm btn-outline-warning my-0"  (click)="supprimerEquipe(equipe)" >Supprimer l'équipe</button>
+                  </td>
+                  <td class="text-right">
+                    <div ngbDropdown placement="bottom-right">
+                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                        <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                        <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                
+                
+                
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Dark table -->
+   
+      
+    </div>
+ 
+ 
+   <ng-template #modification let-modal>
+    <div class="modal-header bg-gradient-warning ">
+      <h2 class="modal-title">Modifier l'équipe :  {{equipeModifie.nomEquipe}}</h2>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+     <div class="modal-body ">
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="collection"></i></span>
+          </div>
+    
+          <input class="form-control" placeholder="Modifier le Nom de l'Equipe" type="text" [(ngModel)]="equipeModifie.nomEquipe" [ngModelOptions]="{standalone: true}" >
+        </div>
+      </div>
+      <div class="table-responsive" >
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Date Naissance</th>
+              <th scope="col">Numero de telephone</th>
+              <th scope="col">Actions</th>
+
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let member of membersEquipe ; let i = index;" >
+              <th scope="row">
+                <div class="media align-items-center">
+               <!--  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                  </a>--> 
+                  <div class="media-body">
+                    <span class="mb-0 text-sm">{{member.id}}</span>
+                  </div>
+                </div>
+              </th>
+              <td>
+                {{member.nom}}
+              </td>
+              <td>
+                {{member.prenom}}
+              </td>
+              <td>
+                {{member.dateNaissance}}
+              </td>
+              <td>
+                {{member.numPhone}}
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-outline-warning my-0" (click)="suppMembEquipe(member.id)"  >Retirer</button>
+               </td>
+              <td class="text-right">
+                <div ngbDropdown placement="bottom-right">
+                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            
+            
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn bg-warning text-white" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+  <ng-template #members let-modal>
+    <div class="modal-header bg-gradient-warning ">
+      <h2 class="modal-title">Ajouter des memnres à l'équipe :  {{equipeajouter.nomEquipe}}</h2>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+     <div class="modal-body ">
+     
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Date Naissance</th>
+              <th scope="col">Numero de telephone</th>
+              <th scope="col">Actions</th>
+
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let member of membersSansEquipes ; let i = index;" >
+              <th scope="row">
+                <div class="media align-items-center">
+               <!--  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                  </a>--> 
+                  <div class="media-body">
+                    <span class="mb-0 text-sm">{{member.id}}</span>
+                  </div>
+                </div>
+              </th>
+              <td>
+                {{member.nom}}
+              </td>
+              <td>
+                {{member.prenom}}
+              </td>
+              <td>
+                {{member.dateNaissance}}
+              </td>
+              <td>
+                {{member.numPhone}}
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-outline-warning my-0" (click)="ajouterMembers(member.id , equipeajouter.id)"  >Ajouter</button>
+               </td>
+              <td class="text-right">
+                <div ngbDropdown placement="bottom-right">
+                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            
+            
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn bg-warning text-white" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  
+ 
+  

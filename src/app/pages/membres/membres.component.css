@@ -1,0 +1,11 @@
+.btn:hover {
+    color: rgb(251, 99, 63); 
+    background-color: #161617; 
+    border-color: rgb(251, 99, 63);
+  }
+
+  .btn:focus {
+    color: rgb(251, 99, 63); 
+    background-color: #161617; 
+    border-color: rgb(251, 99, 63);
+  }

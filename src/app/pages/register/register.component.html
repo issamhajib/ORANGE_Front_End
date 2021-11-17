@@ -1,0 +1,118 @@
+<div class="header bg-gradient-warning py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white display-1">Bienvenu !</h1>
+          <p class="text-lead text-light display-4">Outil de notification SMS suite à des incidents techniques .</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent pb-2">
+          <h1 class="display-4" style="text-align: center;">Inscription </h1>
+         </div>
+         <div class="card-body px-lg-5 py-lg-3">
+          <div *ngIf="danger" class="alert alert-danger" role="alert">
+            <strong>{{message}}</strong> 
+          </div>
+          <div  *ngIf="sucess" class="alert alert-success" role="alert">
+            <strong> {{message}}</strong>
+          </div>
+          <form role="form">
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Nom" type="text" [(ngModel)]="form.nom" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Prenom" type="text" [(ngModel)]="form.prenom" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Date de Naissance" type="date" [(ngModel)]="form.dateNaissance" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" placeholder="Numéro de telephone" type="text" [(ngModel)]="form.numPhone" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input class="form-control" placeholder="Email" type="email" [(ngModel)]="form.email" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input class="form-control" placeholder="Mote de passe" type="password" [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input class="form-control" placeholder="Confirmer le mote de passe" type="password"  [(ngModel)]="confirmpassword" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+            <div class="row my-4">
+              <div class="col-12">
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                  <label class="custom-control-label" for="customCheckRegister">
+                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn btn-warning mt-4" (click)="signup()">Create account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <a class="text-light"><small></small></a>
+        </div>
+        <div class="col-6 text-right">
+          <a routerLinkActive="active" [routerLink]="['/login']" class="text-light"><small>Se Connecter</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
